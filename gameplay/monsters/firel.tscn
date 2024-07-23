@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bx27w1q5q38mg"]
+
+[ext_resource type="Texture2D" uid="uid://dmt0n35oq7540" path="res://assets/sprites/firel.png" id="1_cyjpi"]
+[ext_resource type="Script" path="res://gameplay/monsters/firel.gd" id="1_eyo0b"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qpenl"]
+radius = 102.02
+
+[node name="Firel" type="Area2D" groups=["DynamicObject"]]
+position = Vector2(107, -164)
+script = ExtResource("1_eyo0b")
+element = 2
+
+[node name="Firel" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_cyjpi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 57)
+shape = SubResource("CircleShape2D_qpenl")

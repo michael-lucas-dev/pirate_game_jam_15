@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bq7c620c1dony"]
+
+[ext_resource type="Texture2D" uid="uid://c4qqgk6r5454w" path="res://assets/sprites/leaupez.png" id="1_kuj3k"]
+[ext_resource type="Script" path="res://gameplay/monsters/leaupez.gd" id="1_ou760"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qpenl"]
+radius = 86.1452
+
+[node name="Leaupez" type="Area2D" groups=["DynamicObject"]]
+position = Vector2(92, -60)
+script = ExtResource("1_ou760")
+element = 1
+
+[node name="Leaupez" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_kuj3k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 7)
+shape = SubResource("CircleShape2D_qpenl")
