@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://com33a71fh5vy"]
+
+[ext_resource type="Script" path="res://gameplay/monsters/slime.gd" id="1_7vinu"]
+[ext_resource type="Texture2D" uid="uid://hh4mijusg76s" path="res://assets/sprites/slime.png" id="1_8op80"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qpenl"]
+radius = 102.02
+
+[node name="Slime" type="Area2D" groups=["DynamicObject"]]
+position = Vector2(102, -42)
+script = ExtResource("1_7vinu")
+element = 3
+
+[node name="Slime" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_8op80")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2)
+shape = SubResource("CircleShape2D_qpenl")
