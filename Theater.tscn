@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://dbwtrx0www7yo"]
+
+[ext_resource type="PackedScene" uid="uid://djqi86wp1o51h" path="res://packs/stage_curtains/scene.gltf" id="1_6dkji"]
+[ext_resource type="Script" path="res://Theater.gd" id="1_646rv"]
+[ext_resource type="PackedScene" uid="uid://bhuvlpnisv1qh" path="res://packs/curtain/folded_curtain.glb" id="2_f2w4u"]
+[ext_resource type="PackedScene" uid="uid://06v0cx45ykvo" path="res://packs/curtain/folded_curtain_left.glb" id="3_oiscq"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_6vew0"]
+size = Vector2(5, 3)
+
+[node name="Theater" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.55977, 0)
+script = ExtResource("1_646rv")
+
+[node name="Screen" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("PlaneMesh_6vew0")
+skeleton = NodePath("../..")
+
+[node name="main_curtain" parent="." instance=ExtResource("1_6dkji")]
+transform = Transform3D(-1.27981e-08, 0, -0.292787, 0, 0.493551, 0, 0.292787, 0, -1.27981e-08, -2.49956, -1.61777, 0.0537138)
+
+[node name="folded_curtain" parent="." instance=ExtResource("2_f2w4u")]
+transform = Transform3D(1.25348, 0, 0, 0, 1.25348, 0, 0, 0, 1.25348, 1.07079, -1.60529, 0.194362)
+
+[node name="folded_curtain_left" parent="." instance=ExtResource("3_oiscq")]
+transform = Transform3D(1.253, 0, 0, 0, 1.253, 0, 0, 0, 1.253, -3.07104, -1.605, 0.194)
