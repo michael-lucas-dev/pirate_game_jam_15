@@ -1,6 +1,10 @@
 name: "godot-ci export"
 
 on:
+  push:
+    branches:
+      - master
+
   workflow_dispatch: {}
 
 env:
@@ -78,6 +82,15 @@ jobs:
           mkdir -v -p build/web
           cd $PROJECT_PATH
           godot --headless --verbose --export-release "Web" ./build/web/index.html
+
+      # Workaround for SharedArrayBuffer support on GitHub Pages
+      # See: https://github.com/godotengine/godot-docs/issues/7084
+      - name: Add coi-service-worker
+        run: |
+          git clone https://github.com/gzuidhof/coi-serviceworker.git
+          mv coi-serviceworker/coi-serviceworker.js build/web/coi-serviceworker.js
+          sed -i '3 i <script src="coi-serviceworker.js"></script>' build/web/index.html
+
       - name: Upload Artifact
         uses: actions/upload-artifact@v1
         with:
