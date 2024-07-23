@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dbwtrx0www7yo" path="res://Theater.tscn" id="1_5tayp"]
 [ext_resource type="Script" path="res://gameplay/levels/main.gd" id="1_6p7d1"]
 [ext_resource type="PackedScene" uid="uid://cakr7n3bfc5aa" path="res://gameplay/levels/runner_game.tscn" id="4_rqv0f"]
-[ext_resource type="Material" uid="uid://drm3clvqpis42" path="res://assets/Models/TerrainMaterial.tres" id="5_0uc0i"]
+[ext_resource type="Material" uid="uid://drm3clvqpis42" path="res://TerrainMaterial.tres" id="5_0uc0i"]
 [ext_resource type="ArrayMesh" uid="uid://l2yr5lt27h1q" path="res://Terrain.obj" id="6_1mc3v"]
 [ext_resource type="PackedScene" uid="uid://ceimihje0br2i" path="res://gameplay/player/player_3d.tscn" id="7_wp046"]
 
