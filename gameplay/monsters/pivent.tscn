@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://bv4b4x3h5pefg"]
+
+[ext_resource type="Texture2D" uid="uid://db0e80glpiq1u" path="res://assets/sprites/pivent.png" id="1_omwti"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gjwhc"]
+radius = 61.9728
+height = 310.417
+
+[node name="Pivent" type="Area2D"]
+
+[node name="Pivent" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_omwti")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-14, -13)
+rotation = 0.197308
+scale = Vector2(1, 0.96)
+shape = SubResource("CapsuleShape2D_gjwhc")
