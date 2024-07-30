@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://bnpaj2yweytb5"]
+
+[ext_resource type="PackedScene" uid="uid://8o14xo58dmsn" path="res://assets/Models/godzilla.glb" id="1_ye2b3"]
+
+[node name="godzilla" instance=ExtResource("1_ye2b3")]
+
+[node name="Cube_001" parent="Armature/Skeleton3D" index="0"]
+visible = false
+
+[node name="Cube_003" parent="Armature/Skeleton3D" index="2"]
+visible = false
+
+[node name="Cube_004" parent="Armature/Skeleton3D" index="3"]
+visible = false
+
+[node name="Cube_007" parent="Armature/Skeleton3D" index="6"]
+visible = false
+
+[node name="Cube_010" parent="Armature/Skeleton3D" index="7"]
+visible = false

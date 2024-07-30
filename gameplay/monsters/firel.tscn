@@ -1,14 +1,16 @@
 [gd_scene load_steps=4 format=3 uid="uid://bx27w1q5q38mg"]
 
 [ext_resource type="Texture2D" uid="uid://dmt0n35oq7540" path="res://assets/sprites/firel.png" id="1_cyjpi"]
-[ext_resource type="Script" path="res://gameplay/monsters/firel.gd" id="1_eyo0b"]
+[ext_resource type="Script" path="res://gameplay/monsters/Monster.gd" id="1_jk6wd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qpenl"]
 radius = 102.02
 
-[node name="Firel" type="Area2D" groups=["DynamicObject"]]
+[node name="Firel" type="Area2D" groups=["DynamicObject", "Monster"]]
 position = Vector2(107, -164)
-script = ExtResource("1_eyo0b")
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_jk6wd")
 element = 2
 
 [node name="Firel" type="Sprite2D" parent="."]

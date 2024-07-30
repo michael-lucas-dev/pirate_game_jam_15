@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://c6oaoqswfiap4"]
+
+[node name="Monster" type="Area2D" groups=["DynamicObject"]]
+scale = Vector2(1.5, 1.5)

@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://daxygoynvdyya"]
+[gd_scene load_steps=4 format=3 uid="uid://daxygoynvdyya"]
 
 [ext_resource type="Theme" uid="uid://ccf4ouq8y0fi" path="res://assets/themes/default_theme.tres" id="1_mwxwu"]
 [ext_resource type="Script" path="res://scenes/ui/menus/game_menu.gd" id="2_pgx83"]
-[ext_resource type="Script" path="res://scenes/ui/menus/UnpauseNode.gd" id="3_g0t1k"]
-[ext_resource type="LabelSettings" uid="uid://dhq87upoqyd8a" path="res://assets/disabled_label_settings.tres" id="3_hcm43"]
+[ext_resource type="Script" path="res://scenes/ui/menus/unpause_node.gd" id="3_g0t1k"]
 
 [node name="GameMenu" type="Control"]
 process_mode = 3
@@ -94,7 +93,6 @@ layout_mode = 2
 [node name="MusicLabel" type="Label" parent="MarginContainer/ButtonsVBox/SettingsGridContainer"]
 layout_mode = 2
 text = "Music"
-label_settings = ExtResource("3_hcm43")
 
 [node name="MusicSlider" type="HSlider" parent="MarginContainer/ButtonsVBox/SettingsGridContainer"]
 unique_name_in_owner = true
@@ -107,7 +105,6 @@ focus_next = NodePath("../SFXSlider")
 focus_previous = NodePath("../../ReturnToGameButton")
 max_value = 1.0
 step = 0.05
-editable = false
 
 [node name="HSeparator6" type="HSeparator" parent="MarginContainer/ButtonsVBox/SettingsGridContainer"]
 layout_mode = 2
@@ -118,7 +115,6 @@ layout_mode = 2
 [node name="SFXLabel" type="Label" parent="MarginContainer/ButtonsVBox/SettingsGridContainer"]
 layout_mode = 2
 text = "SFX"
-label_settings = ExtResource("3_hcm43")
 
 [node name="SFXSlider" type="HSlider" parent="MarginContainer/ButtonsVBox/SettingsGridContainer"]
 unique_name_in_owner = true
@@ -132,7 +128,6 @@ focus_previous = NodePath("../MusicSlider")
 max_value = 1.0
 step = 0.05
 value = 1.0
-editable = false
 
 [node name="HSeparator8" type="HSeparator" parent="MarginContainer/ButtonsVBox/SettingsGridContainer"]
 layout_mode = 2
