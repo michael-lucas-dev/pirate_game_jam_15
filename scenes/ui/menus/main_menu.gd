@@ -28,3 +28,7 @@ func _on_visibility_changed():
 		focus_button()
 
 
+
+
+func _on_credit_button_pressed():
+	pass # Replace with function body.

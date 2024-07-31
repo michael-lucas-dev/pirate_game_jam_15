@@ -2,6 +2,8 @@ extends Node
 
 signal health_depleted
 
+enum ElementAtt {NULL = 0, AIR = 1, WATER = 2, FIRE = 3, EARTH = 4, OURAGAN = 5, FIREBALL = 6, ROCKFALL = 7, LAVA = 8, MUD = 9, VOLCANO = 10}
+
 var enemy_list = [
 	preload("res://gameplay/monsters/firel.tscn"),
 	preload("res://gameplay/monsters/leaupez.tscn"),
@@ -46,7 +48,7 @@ func _hit_enemy(body: Node2D, enemy_instance: Monster):
 		enemy_instance.queue_free()
 		body.queue_free()
 		
-func attack(element):
+func attack(element: ElementAtt):
 	var bullet_temp = bullet_scene.instantiate()
 	bullet_temp.element = element
 	bullet_temp.bullet_owner = "Player"

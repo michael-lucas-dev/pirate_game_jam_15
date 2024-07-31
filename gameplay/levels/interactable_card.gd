@@ -1,11 +1,13 @@
 extends InteractableObject
 
-enum Element {AIR, WATER, FIRE, EARTH}
-@export var element : Element
+enum ElementCard {NULL, AIR, WATER, FIRE, EARTH}
+@export var element : ElementCard
 @export var color : Color
 @onready var game_flat = get_node("../GameView/GameFlat")
 @onready var mesh = get_node("CardMesh")
 @export var enabled : bool = false
+
+signal on_interact_card
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -18,12 +20,17 @@ func _ready():
 
 func set_interact_prompt():
 	interact_prompt = "Enable" if !enabled else "Disable" 
-	interact_prompt += " " + Element.keys()[element] + " spell"
+	interact_prompt += " " + ElementCard.keys()[element] + " spell"
 	
+
+func disable():
+	enabled = false
+	$CardLight.visible = false
+	set_interact_prompt()
 
 func _interact():
 	enabled = !enabled
+	$CardLight.visible = enabled
 	set_interact_prompt()
-	game_flat.attack(element)
-	print("attack ", element)
+	on_interact_card.emit(element)
 pass
