@@ -15,7 +15,8 @@ extends CharacterBody3D
 @export var jump_force : float = 5.0
 @export var gravity_modifier : float = 1.5
 @export var max_run_speed : float = 6.0
-var is_running : bool = false
+@export var is_input_reading: bool=true
+
 
 #Camera
 @export_group("Camera")
@@ -38,21 +39,10 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 	
-	# Jumping
-	if Input.is_action_pressed("jump") && is_on_floor():
-		velocity.y = jump_force
-	
 	var move_input = Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
 	var move_dir = (transform.basis * Vector3(move_input.x, 0, move_input.y)).normalized()
 	
-	is_running = Input.is_action_pressed("sprint")
 	var target_speed = max_speed
-	if is_running:
-		target_speed = max_run_speed
-		var run_dot = -move_dir.dot(transform.basis.z)
-		run_dot = clamp(run_dot, 0.0, 1.0)
-		move_dir *= run_dot
-	
 	var current_smoothing = acceleration
 	
 	if not is_on_floor():
@@ -64,14 +54,16 @@ func _physics_process(delta):
 	
 	velocity.x = lerp(velocity.x, target_velocity.x, current_smoothing * delta)
 	velocity.z = lerp(velocity.z, target_velocity.z, current_smoothing * delta)
-	move_and_slide()
 	
-	#Camera look
-	rotate_y(-camera_look_input.x * look_sensitivity)
+	if is_input_reading:
+		move_and_slide()
+	
+		#Camera look
+		rotate_y(-camera_look_input.x * look_sensitivity)
 
-	camera.rotate_x(-camera_look_input.y * look_sensitivity)
-	camera.rotation.x = clamp(camera.rotation.x, -1.5, 2.5)
-	camera_look_input = Vector2.ZERO
+		camera.rotate_x(-camera_look_input.y * look_sensitivity)
+		camera.rotation.x = clamp(camera.rotation.x, -1.5, 2.5)
+		camera_look_input = Vector2.ZERO
 	
 func _input(event):
 	# Listen for mouse movement and check if mouse is captured

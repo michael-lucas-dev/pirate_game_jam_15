@@ -1,0 +1,97 @@
+[gd_scene load_steps=4 format=3 uid="uid://ssecf8f8omou"]
+
+[ext_resource type="Theme" uid="uid://ccf4ouq8y0fi" path="res://assets/themes/default_theme.tres" id="1_y3rv1"]
+[ext_resource type="Script" path="res://scenes/ui/menus/credit_menu.gd" id="2_oscxw"]
+[ext_resource type="Script" path="res://scenes/ui/menus/unpause_node.gd" id="3_1s7b5"]
+
+[node name="CreditMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_y3rv1")
+script = ExtResource("2_oscxw")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0705882, 0.0705882, 0.0705882, 0.780392)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 256
+theme_override_constants/margin_right = 256
+
+[node name="CreditVBox" type="VBoxContainer" parent="MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+alignment = 1
+
+[node name="MainMenuButton" type="Button" parent="MarginContainer/CreditVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Return to menu"
+alignment = 0
+
+[node name="HSeparator2" type="HSeparator" parent="MarginContainer/CreditVBox"]
+layout_mode = 2
+
+[node name="SettingsGridContainer" type="GridContainer" parent="MarginContainer/CreditVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/h_separation = 16
+columns = 2
+
+[node name="MusicLabel" type="Label" parent="MarginContainer/CreditVBox/SettingsGridContainer"]
+layout_mode = 2
+text = "Music"
+
+[node name="MusicCredit" type="Label" parent="MarginContainer/CreditVBox/SettingsGridContainer"]
+layout_mode = 2
+text = "- Sound effects by AlesiaDavina from pixabay
+- Sound effect by DavidDumaisAudio from pixabay
+- Sound effects by UNIVERSFIELD from pixabay
+- Sound effect by SoundReality from pixabay"
+
+[node name="SpritesLabel" type="Label" parent="MarginContainer/CreditVBox/SettingsGridContainer"]
+layout_mode = 2
+text = "Sprites"
+
+[node name="SpritesCredit" type="Label" parent="MarginContainer/CreditVBox/SettingsGridContainer"]
+layout_mode = 2
+text = "- Forest by Harmony Lawrence from Pixabay
+- Bomb, Storm, Cloud, Fire by OpenClipart-Vectors from Pixabay
+- Dirt, Sand by OpenClipart-Vectors from Pixabay"
+
+[node name="ModelsLabel" type="Label" parent="MarginContainer/CreditVBox/SettingsGridContainer"]
+layout_mode = 2
+text = "3D Models"
+
+[node name="ModelsCredit" type="Label" parent="MarginContainer/CreditVBox/SettingsGridContainer"]
+layout_mode = 2
+text = "- Godzilla by jared is a goober from sketchfab
+- Side Curtains by daedaljs from sketchfab
+- Main curtain by milaink from sketchfab"
+
+[node name="HSeparator3" type="HSeparator" parent="MarginContainer/CreditVBox"]
+layout_mode = 2
+
+[node name="UnpauseNode" type="Node" parent="."]
+process_mode = 2
+script = ExtResource("3_1s7b5")
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="pressed" from="MarginContainer/CreditVBox/MainMenuButton" to="." method="_on_main_menu_button_pressed"]

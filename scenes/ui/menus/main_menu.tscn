@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://ossrp4y0wtt2"]
+[gd_scene load_steps=5 format=3 uid="uid://ossrp4y0wtt2"]
 
 [ext_resource type="Theme" uid="uid://ccf4ouq8y0fi" path="res://assets/themes/default_theme.tres" id="1_hgrl0"]
 [ext_resource type="Script" path="res://scenes/ui/menus/main_menu.gd" id="2_kc8p2"]
-[ext_resource type="Texture2D" uid="uid://chxdy4cn6xmt3" path="res://assets/sprites/walls.png" id="3_0rlcu"]
+[ext_resource type="Texture2D" uid="uid://bjoq5saa7puch" path="res://assets/sprites/perso.png" id="3_0oqv2"]
+[ext_resource type="Texture2D" uid="uid://dn5i6m5ogk65t" path="res://assets/sprites/forst.jpg" id="3_8bfme"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -14,14 +15,41 @@ grow_vertical = 2
 theme = ExtResource("1_hgrl0")
 script = ExtResource("2_kc8p2")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="TextureRect2" type="TextureRect" parent="."]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2.0
+offset_top = -81.0
+offset_right = -2.0
+offset_bottom = 401.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_0rlcu")
+scale = Vector2(0.604146, 0.604146)
+texture = ExtResource("3_8bfme")
+expand_mode = 4
+stretch_mode = 3
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2.0
+offset_top = -33.0
+offset_right = -2.0
+offset_bottom = 449.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.281023, 0.281023)
+texture = ExtResource("3_0oqv2")
+expand_mode = 4
+stretch_mode = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -43,7 +71,7 @@ alignment = 1
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 32
-text = "Menu Manager 3D"
+text = "Shadow runner"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -60,6 +88,14 @@ focus_neighbor_top = NodePath("../QuitGameButton")
 focus_previous = NodePath("../QuitGameButton")
 text = "Start Game"
 
+[node name="CreditButton" type="Button" parent="MarginContainer/VBoxContainer/ButtonsVBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_neighbor_top = NodePath("../QuitGameButton")
+focus_previous = NodePath("../QuitGameButton")
+text = "credits"
+
 [node name="QuitGameButton" type="Button" parent="MarginContainer/VBoxContainer/ButtonsVBox"]
 layout_mode = 2
 size_flags_horizontal = 4
@@ -70,4 +106,5 @@ text = "Exit"
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonsVBox/StartGameButton" to="." method="_on_start_game_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonsVBox/CreditButton" to="." method="_on_credit_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonsVBox/QuitGameButton" to="." method="_on_quit_button_pressed"]

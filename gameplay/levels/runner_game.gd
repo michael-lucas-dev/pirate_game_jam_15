@@ -1,14 +1,21 @@
 extends Node
 
+signal health_depleted
+
+enum ElementAtt {NULL = 0, AIR = 1, WATER = 2, FIRE = 3, EARTH = 4, OURAGAN = 5, FIREBALL = 6, ROCKFALL = 7, LAVA = 8, MUD = 9, VOLCANO = 10}
+
 var enemy_list = [
 	preload("res://gameplay/monsters/firel.tscn"),
 	preload("res://gameplay/monsters/leaupez.tscn"),
 	preload("res://gameplay/monsters/pivent.tscn"),
 	preload("res://gameplay/monsters/slime.tscn")
 ]
+@onready var player = get_node("Player")
 
-var dynamic_objects_speed: int = 700
-var health : float = 100
+@onready var bullet_scene: PackedScene = preload("res://gameplay/player/bullet.tscn")
+
+var dynamic_objects_speed: int = 100
+var health : float = 5
 var score : float = 0
 
 var spawned_object_position_x : int = 1700
@@ -22,7 +29,6 @@ func _process(delta):
 		dynamic_object.position.x -= delta * dynamic_objects_speed
 	pass
 
-
 func _on_spawner_timer_timeout():
 	var enemy_spawn = randf_range(0, enemy_list.size())
 	var enemy = enemy_list[enemy_spawn].instantiate()
@@ -30,9 +36,24 @@ func _on_spawner_timer_timeout():
 	enemy.body_entered.connect(_hit_enemy.bind(enemy))
 	add_child(enemy)
 		
-func _hit_enemy(body: Node2D, enemy_instance: Area2D):
+func _hit_enemy(body: Node2D, enemy_instance: Monster):
+	print(body.get_groups())
 	if body.is_in_group("Player"):
-		health -= 10
+		health -= 1
+		health_depleted.emit()
 		enemy_instance.queue_free()
 		
+		
+	elif body.is_in_group("Bullet"):
+		enemy_instance.queue_free()
+		body.queue_free()
+		
+func attack(element: ElementAtt):
+	var bullet_temp = bullet_scene.instantiate()
+	bullet_temp.element = element
+	bullet_temp.bullet_owner = "Player"
+	bullet_temp.position = player.global_position
+	bullet_temp.direction = Vector2(1,0)
+	get_node("bullets").add_child(bullet_temp)
+	
 

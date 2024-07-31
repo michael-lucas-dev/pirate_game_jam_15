@@ -1,6 +1,5 @@
 extends Control
 
-
 @onready var buttons_v_box = %ButtonsVBox
 signal start_game()
 
@@ -27,4 +26,10 @@ func _on_visibility_changed():
 	if visible:
 		focus_button()
 
+
+
+
+func _on_credit_button_pressed():
+	get_tree().change_scene_to_file("res://scenes/ui/menus/credit_menu.tscn") #Goes to the credit.
+	hide()
 

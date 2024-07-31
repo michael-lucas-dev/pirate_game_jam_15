@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://ostltmt3e4s3"]
+
+[ext_resource type="Script" path="res://gameplay/player/bullet.gd" id="1_26r4m"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_370er"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uw47y"]
+radius = 12.0416
+
+[node name="BulletScene" type="CharacterBody2D" groups=["Bullet"]]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_26r4m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_370er")
+
+[node name="BulletArea" type="Area2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="BulletArea"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BulletArea"]
+shape = SubResource("CircleShape2D_uw47y")
+
+[connection signal="body_entered" from="BulletArea" to="." method="_on_bullet_area_body_entered"]
