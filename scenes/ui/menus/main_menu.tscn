@@ -94,7 +94,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 focus_neighbor_top = NodePath("../QuitGameButton")
 focus_previous = NodePath("../QuitGameButton")
-text = "Start Game"
+text = "credits"
 
 [node name="QuitGameButton" type="Button" parent="MarginContainer/VBoxContainer/ButtonsVBox"]
 layout_mode = 2
