@@ -23,6 +23,14 @@ shape = SubResource("CapsuleShape3D_m5elo")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 current = true
 
+[node name="MainTimer" type="Label" parent="Camera3D"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -132.0
+offset_bottom = 71.0
+grow_horizontal = 0
+
 [node name="InteractionController" type="RayCast3D" parent="Camera3D"]
 target_position = Vector3(0, 0, -2)
 script = ExtResource("2_k051c")

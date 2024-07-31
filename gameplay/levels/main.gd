@@ -13,6 +13,8 @@ var target_position = Vector3(-0.027, 0, 3.409)
 var smooth_rotation: Vector3
 var timer_counter = 0
 
+var main_timer : float = 0
+
 static var _instance: World = null
 @onready var game = get_node("GameView/GameFlat")
 @onready var camera = $Player3D/Camera3D
@@ -50,6 +52,7 @@ func _interact_card(element: Element):
 	#element_1 = element_2
 	#element_2 = element
 	print("elements: " + Element.keys()[element_1] + ","+Element.keys()[element_2])
+	attack()
 
 func _disable_element(element: Element):
 	match element:
@@ -70,6 +73,13 @@ func _death():
 		death_step = 1
 	
 func _process(delta):
+	if death_step == 0:
+		main_timer += delta
+		var hours = int(main_timer/3600)
+		var minutes = int(int(main_timer)%3600/60)
+		var seconds = int(int(main_timer)%60)
+		$Player3D/Camera3D/MainTimer.text = str(hours)+":"+str(minutes)+":"+str(seconds)
+	
 	if death_step == 1:
 		$Player3D.position = target_position
 		smooth_rotation = smooth_rotation.lerp(target_rotation_1, delta * 10)
